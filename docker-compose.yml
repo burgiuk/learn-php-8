@@ -12,7 +12,10 @@ services:
       - ./data/:/var/www/html/
       - ./logs/nginx:/var/log/nginx/
   php:
-    image: php:fpm-alpine
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    tty: true
     networks:
       - internal
     volumes:
